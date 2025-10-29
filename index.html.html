@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click Local Sevilla - Digitalización Elegante para Negocios Sevillanos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variables CSS - Esquema de color profesional y atractivo */
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --primary-light: #4895ef;
+            --secondary: #7209b7;
+            --accent: #f72585;
+            --accent-light: #ff4da6;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --text: #2b2d42;
+            --text-light: #6c757d;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            --gradient-light: linear-gradient(135deg, var(--primary-light) 0%, var(--accent) 100%);
+            --shadow: 0 4px 20px rgba(67, 97, 238, 0.15);
+            --shadow-hover: 0 10px 30px rgba(67, 97, 238, 0.25);
+            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* Reset y estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3, h4 {
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: 3rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-size: 1.75rem;
+        }
+
+        h4 {
+            font-size: 1.25rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        section {
+            padding: 6rem 0;
+        }
+
+        /* Botones */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            width: 100%;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: var(--white);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        .btn-accent {
+            background: var(--gradient-light);
+            color: var(--white);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-accent:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(247, 37, 133, 0.3);
+        }
+
+        /* Header */
+        #header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 20px;
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo-dot {
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            border-radius: 50%;
+            margin-left: 6px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            font-weight: 600;
+            position: relative;
+            color: var(--text);
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 12rem 0 8rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="%234361ee" opacity="0.03"/></svg>');
+            background-size: cover;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            color: var(--text-light);
+            max-width: 90%;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-badges {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: var(--white);
+            color: var(--primary);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(67, 97, 238, 0.1);
+        }
+
+        .badge i {
+            color: var(--accent);
+        }
+
+        .hero-visual {
+            flex: 1;
+            display: flex;
+            justify-content: space-between;
+            gap: 2rem;
+            height: 300px;
+        }
+
+        .floating-card {
+            background-color: var(--white);
+            color: var(--text);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            width: 48%;
+            animation: float 6s ease-in-out infinite;
+            border: 1px solid rgba(67, 97, 238, 0.1);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .floating-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .floating-card:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .floating-card:nth-child(2) {
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: var(--gradient);
+            margin-right: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.25rem;
+        }
+
+        .card-stats {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.75rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        /* Problem Solution Section */
+        .problem-solution {
+            background-color: var(--light);
+            position: relative;
+        }
+
+        .problem-solution::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="%234361ee" opacity="0.02"/></svg>');
+            background-size: cover;
+            z-index: 0;
+        }
+
+        .ps-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .ps-column h3 {
+            margin-bottom: 2.5rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .ps-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            border-radius: 2px;
+        }
+
+        .problem h3::after {
+            background: var(--accent);
+        }
+
+        .solution h3::after {
+            background: var(--primary);
+        }
+
+        .ps-item {
+            display: flex;
+            margin-bottom: 2.5rem;
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .ps-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .ps-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            margin-right: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .problem .ps-icon {
+            background: var(--accent);
+        }
+
+        .solution .ps-icon {
+            background: var(--primary);
+        }
+
+        /* Packs Section */
+        .packs {
+            padding: 6rem 0;
+        }
+
+        .packs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .pack {
+            background-color: var(--white);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            border: 1px solid rgba(67, 97, 238, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pack:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .pack-popular {
+            border: 2px solid var(--primary);
+            transform: scale(1.05);
+        }
+
+        .pack-popular:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+
+        .pack-badge {
+            position: absolute;
+            top: -12px;
+            right: 30px;
+            background: var(--gradient);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            box-shadow: var(--shadow);
+        }
+
+        .pack-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(67, 97, 238, 0.1);
+        }
+
+        .pack-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--light);
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 2rem;
+            background: var(--gradient);
+            color: var(--white);
+        }
+
+        .pack-price {
+            font-size: 3rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 1rem 0;
+        }
+
+        .pack-features {
+            margin-bottom: 2.5rem;
+            flex-grow: 1;
+        }
+
+        .pack-feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.2rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid rgba(67, 97, 238, 0.05);
+        }
+
+        .pack-feature:last-child {
+            border-bottom: none;
+        }
+
+        .pack-feature:before {
+            content: '✓';
+            color: var(--primary);
+            margin-right: 12px;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .pack-delivery {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(67, 97, 238, 0.1);
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pack-ideal {
+            margin-top: 1.5rem;
+            font-style: italic;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            background: rgba(67, 97, 238, 0.05);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .pack-cta {
+            text-align: center;
+            margin-top: auto;
+        }
+
+        /* Bonus Section */
+        .bonus {
+            background: var(--light);
+            position: relative;
+        }
+
+        .bonus::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,100 L100,0 L100,100 Z" fill="%234361ee" opacity="0.02"/></svg>');
+            background-size: cover;
+            z-index: 0;
+        }
+
+        .bonus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .bonus-item {
+            background-color: var(--white);
+            border-radius: 16px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(67, 97, 238, 0.1);
+        }
+
+        .bonus-item:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .bonus-icon {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: var(--light);
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 2rem;
+            background: var(--gradient);
+        }
+
+        .bonus-price {
+            font-size: 1.75rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 1.5rem 0;
+        }
+
+        /* Why Us Section */
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .why-us-item {
+            display: flex;
+            align-items: flex-start;
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .why-us-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .why-us-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 16px;
+            background: var(--light);
+            margin-right: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.75rem;
+            background: var(--gradient);
+            flex-shrink: 0;
+        }
+
+        /* FAQ Section */
+        .faq {
+            background: var(--light);
+            position: relative;
+        }
+
+        .faq::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,100 L0,100 Z" fill="%234361ee" opacity="0.02"/></svg>');
+            background-size: cover;
+            z-index: 0;
+        }
+
+        .faq-grid {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .faq-item {
+            background-color: var(--white);
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .faq-item:hover {
+            box-shadow: var(--shadow-hover);
+        }
+
+        .faq-question {
+            padding: 1.5rem 2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            background: rgba(67, 97, 238, 0.05);
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            transition: var(--transition);
+            color: var(--primary);
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            padding: 0 2rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 2rem 2rem;
+            max-height: 500px;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: var(--gradient);
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="%23ffffff" opacity="0.05"/></svg>');
+            background-size: cover;
+            z-index: 0;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta h2 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta h2::after {
+            background: var(--white);
+        }
+
+        .cta p {
+            margin-bottom: 2.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .cta .btn-secondary {
+            color: var(--white);
+            border-color: var(--white);
+        }
+
+        .cta .btn-secondary:hover {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 5rem 0 2rem;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="%234361ee" opacity="0.05"/></svg>');
+            background-size: cover;
+            z-index: 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-logo {
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+        }
+
+        .footer-about p {
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer-links h4,
+        .footer-services h4,
+        .footer-contact h4 {
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 12px;
+            color: var(--white);
+        }
+
+        .footer-links h4::after,
+        .footer-services h4::after,
+        .footer-contact h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .footer-links li,
+        .footer-services li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a,
+        .footer-services a {
+            opacity: 0.8;
+            transition: var(--transition);
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer-links a:hover,
+        .footer-services a:hover {
+            opacity: 1;
+            color: var(--accent-light);
+        }
+
+        .footer-contact p {
+            margin-bottom: 0.8rem;
+            opacity: 0.8;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer-contact a {
+            opacity: 0.8;
+            transition: var(--transition);
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer-contact a:hover {
+            opacity: 1;
+            color: var(--accent-light);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+            }
+
+            .hero-visual {
+                width: 100%;
+                margin-top: 3rem;
+                height: auto;
+                flex-direction: column;
+            }
+
+            .floating-card {
+                width: 100%;
+                margin-bottom: 2rem;
+            }
+
+            .ps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pack-popular {
+                transform: none;
+            }
+
+            .pack-popular:hover {
+                transform: translateY(-10px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero-buttons,
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                box-shadow: var(--shadow-hover);
+                padding: 1.5rem 0;
+                gap: 0;
+            }
+
+            nav ul li {
+                width: 100%;
+                text-align: center;
+            }
+
+            nav ul li a {
+                display: block;
+                padding: 1rem 0;
+            }
+
+            nav ul.show {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            section {
+                padding: 4rem 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="#" class="logo">Click Local Sevilla<div class="logo-dot"></div></a>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#packs">Packs</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="inicio">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>Digitalización Elegante para Negocios Sevillanos</h1>
+                <p>Transformamos tu presencia digital con diseños minimalistas y soluciones efectivas. Desde 350€, con enfoque local y resultados medibles.</p>
+                <div class="hero-buttons">
+                    <a href="#packs" class="btn btn-primary"><i class="fas fa-eye"></i> Ver Packs</a>
+                    <a href="https://wa.me/34600000000" class="btn btn-secondary" target="_blank"><i class="fab fa-whatsapp"></i> Consultoría Gratuita</a>
+                </div>
+                <div class="hero-badges">
+                    <div class="badge"><i class="fas fa-rocket"></i> Entregas en 5-12 días</div>
+                    <div class="badge"><i class="fas fa-map-marker-alt"></i> Especialistas Sevilla</div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-card">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                        <div>
+                            <h4>Presencia Digital Optimizada</h4>
+                            <p>Resultados desde el primer mes</p>
+                        </div>
+                    </div>
+                    <div class="card-stats">
+                        <div class="stat">
+                            <div class="stat-value">+85%</div>
+                            <div class="stat-label">Visibilidad</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">5d</div>
+                            <div class="stat-label">Implementación</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="floating-card">
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fas fa-smile"></i></div>
+                        <div>
+                            <h4>Clientes Satisfechos</h4>
+                            <p>Más de 50 negocios locales</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLEM SOLUTION SECTION -->
+    <section class="problem-solution" id="servicios">
+        <div class="container">
+            <h2>Transformación Digital Sin Complejidades</h2>
+            <div class="ps-grid">
+                <div class="ps-column problem">
+                    <h3>Desafíos Comunes</h3>
+                    <div class="ps-item">
+                        <div class="ps-icon"><i class="fas fa-search"></i></div>
+                        <div>
+                            <h4>Baja Visibilidad Online</h4>
+                            <p>Tu negocio no aparece cuando los clientes te buscan en Google o redes sociales.</p>
+                        </div>
+                    </div>
+                    <div class="ps-item">
+                        <div class="ps-icon"><i class="fas fa-clock"></i></div>
+                        <div>
+                            <h4>Gestión Ineficiente</h4>
+                            <p>Pierdes horas valiosas en tareas manuales que podrían estar automatizadas.</p>
+                        </div>
+                    </div>
+                    <div class="ps-item">
+                        <div class="ps-icon"><i class="fas fa-mobile-alt"></i></div>
+                        <div>
+                            <h4>Imagen Digital Desactualizada</h4>
+                            <p>Tu competencia tiene mejor presencia online y capta a tus clientes potenciales.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="ps-column solution">
+                    <h3>Nuestra Solución</h3>
+                    <div class="ps-item">
+                        <div class="ps-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <h4>Presencia Inmediata en Google</h4>
+                            <p>Optimizamos tu visibilidad para que los clientes te encuentren desde el primer día.</p>
+                        </div>
+                    </div>
+                    <div class="ps-item">
+                        <div class="ps-icon"><i class="fas fa-robot"></i></div>
+                        <div>
+                            <h4>Automatización Inteligente</h4>
+                            <p>Sistemas que trabajan 24/7 gestionando reservas, consultas y presupuestos.</p>
+                        </div>
+                    </div>
+                    <div class="ps-item">
+                        <div class="ps-icon"><i class="fas fa-palette"></i></div>
+                        <div>
+                            <h4>Diseño Profesional</h4>
+                            <p>Imagen moderna y coherente que transmite confianza y profesionalismo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PACKS SECTION -->
+    <section class="packs" id="packs">
+        <div class="container">
+            <h2>Packs de Digitalización</h2>
+            <div class="packs-grid">
+                <!-- PACK 1 -->
+                <div class="pack">
+                    <div class="pack-header">
+                        <div class="pack-icon"><i class="fas fa-seedling"></i></div>
+                        <h3>Presencia Pro</h3>
+                        <div class="pack-price">350€</div>
+                    </div>
+                    <div class="pack-features">
+                        <div class="pack-feature">Web profesional de 1-2 secciones</div>
+                        <div class="pack-feature">Ficha Google My Business optimizada</div>
+                        <div class="pack-feature">WhatsApp Business configurado</div>
+                        <div class="pack-feature">Creación de enlace único</div>
+                        <div class="pack-feature">Diseño visual básico</div>
+                        <div class="pack-delivery"><i class="fas fa-shipping-fast"></i> Entrega: 5 días</div>
+                        <div class="pack-ideal"><strong>Ideal para:</strong> negocios que quieran dar el paso a profesionalizarse</div>
+                    </div>
+                    <div class="pack-cta">
+                        <a href="https://wa.me/34600000000?text=Me interesa el Pack Presencia Pro de 350€" class="btn btn-primary" target="_blank"><i class="fab fa-whatsapp"></i> Contratar</a>
+                    </div>
+                </div>
+
+                <!-- PACK 2 - POPULAR -->
+                <div class="pack pack-popular">
+                    <div class="pack-badge">MÁS POPULAR</div>
+                    <div class="pack-header">
+                        <div class="pack-icon"><i class="fas fa-rocket"></i></div>
+                        <h3>Digitalización Completa</h3>
+                        <div class="pack-price">550€</div>
+                    </div>
+                    <div class="pack-features">
+                        <div class="pack-feature"><strong>Todo lo del Pack Presencia Pro +</strong></div>
+                        <div class="pack-feature">Web completa (hasta 4 secciones)</div>
+                        <div class="pack-feature">Sistema de reservas online</div>
+                        <div class="pack-feature">Plantillas de redes personalizadas</div>
+                        <div class="pack-feature">Correos profesionales</div>
+                        <div class="pack-feature">Copywriting optimizado</div>
+                        <div class="pack-delivery"><i class="fas fa-shipping-fast"></i> Entrega: 7-10 días</div>
+                        <div class="pack-ideal"><strong>Ideal para:</strong> negocios que opten a tener más leads</div>
+                    </div>
+                    <div class="pack-cta">
+                        <a href="https://wa.me/34600000000?text=Me interesa el Pack Digitalización Completa de 550€" class="btn btn-accent" target="_blank"><i class="fab fa-whatsapp"></i> Contratar</a>
+                    </div>
+                </div>
+
+                <!-- PACK 3 -->
+                <div class="pack">
+                    <div class="pack-header">
+                        <div class="pack-icon"><i class="fas fa-trophy"></i></div>
+                        <h3>Crecimiento Local</h3>
+                        <div class="pack-price">750€</div>
+                    </div>
+                    <div class="pack-features">
+                        <div class="pack-feature"><strong>Todo lo del Pack Digitalización +</strong></div>
+                        <div class="pack-feature">Mantenimiento 3 meses</div>
+                        <div class="pack-feature">Informes mensuales de tráfico</div>
+                        <div class="pack-feature">Estrategia de reseñas</div>
+                        <div class="pack-feature">Publicaciones profesionales</div>
+                        <div class="pack-feature">Consultoría mensual</div>
+                        <div class="pack-delivery"><i class="fas fa-shipping-fast"></i> Entrega inicial: 10-12 días</div>
+                        <div class="pack-ideal"><strong>Ideal para:</strong> negocios con ambición de crecimiento</div>
+                    </div>
+                    <div class="pack-cta">
+                        <a href="https://wa.me/34600000000?text=Me interesa el Pack Crecimiento Local de 750€" class="btn btn-primary" target="_blank"><i class="fab fa-whatsapp"></i> Contratar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BONUS SECTION -->
+    <section class="bonus">
+        <div class="container">
+            <h2>Servicios Complementarios</h2>
+            <div class="bonus-grid">
+                <div class="bonus-item">
+                    <div class="bonus-icon"><i class="fas fa-tools"></i></div>
+                    <h3>Mantenimiento Mensual</h3>
+                    <p>Actualizaciones, cambios y gestión continua para mantener tu presencia online siempre optimizada.</p>
+                    <div class="bonus-price">Desde 40€</div>
+                    <a href="https://wa.me/34600000000?text=Me interesa el mantenimiento mensual" class="btn btn-secondary" target="_blank"><i class="fab fa-whatsapp"></i> Consultar</a>
+                </div>
+                <div class="bonus-item">
+                    <div class="bonus-icon"><i class="fas fa-camera"></i></div>
+                    <h3>Sesión Fotográfica</h3>
+                    <p>Contenido visual profesional para redes sociales que destaque los valores de tu negocio.</p>
+                    <div class="bonus-price">Desde 80€</div>
+                    <a href="https://wa.me/34600000000?text=Me interesa la sesión de fotos/vídeos" class="btn btn-secondary" target="_blank"><i class="fab fa-whatsapp"></i> Consultar</a>
+                </div>
+                <div class="bonus-item">
+                    <div class="bonus-icon"><i class="fas fa-search-location"></i></div>
+                    <h3>SEO Local Avanzado</h3>
+                    <p>Posicionamiento específico para búsquedas locales en Sevilla y alrededores.</p>
+                    <div class="bonus-price">Consultar</div>
+                    <a href="https://wa.me/34600000000?text=Me interesa el SEO local avanzado" class="btn btn-secondary" target="_blank"><i class="fab fa-whatsapp"></i> Consultar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY US SECTION -->
+    <section class="why-us">
+        <div class="container">
+            <h2>Por Qué Elegirnos</h2>
+            <div class="why-us-grid">
+                <div class="why-us-item">
+                    <div class="why-us-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="why-us-content">
+                        <h3>Especialistas Locales</h3>
+                        <p>Conocemos el mercado sevillano y sabemos qué funciona para negocios como el tuyo.</p>
+                    </div>
+                </div>
+                <div class="why-us-item">
+                    <div class="why-us-icon"><i class="fas fa-bolt"></i></div>
+                    <div class="why-us-content">
+                        <h3>Implementación Rápida</h3>
+                        <p>Tu negocio online en días, no semanas. Entregas rápidas sin comprometer la calidad.</p>
+                    </div>
+                </div>
+                <div class="why-us-item">
+                    <div class="why-us-icon"><i class="fas fa-comments"></i></div>
+                    <div class="why-us-content">
+                        <h3>Comunicación Directa</h3>
+                        <p>Sin intermediarios. Comunicación clara y personalizada en cada etapa del proyecto.</p>
+                    </div>
+                </div>
+                <div class="why-us-item">
+                    <div class="why-us-icon"><i class="fas fa-chart-bar"></i></div>
+                    <div class="why-us-content">
+                        <h3>Resultados Tangibles</h3>
+                        <p>Enfocados en métricas que importan: visibilidad, conversiones y crecimiento sostenible.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <h2>Preguntas Frecuentes</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">¿Qué incluye exactamente cada pack?</div>
+                    <div class="faq-answer">
+                        <p>Cada pack incluye todos los elementos listados, más dominio y hosting por un año. El Pack Presencia Pro se enfoca en visibilidad básica, el Digitalización Completa añade automatización, y el Crecimiento Local incluye mantenimiento y consultoría continua.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">¿Puedo actualizar de un pack a otro posteriormente?</div>
+                    <div class="faq-answer">
+                        <p>Sí, ofrecemos upgrade entre packs. Solo pagas la diferencia entre el pack actual y el nuevo, más cualquier servicio adicional que contrates.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">¿Qué métodos de pago aceptáis?</div>
+                    <div class="faq-answer">
+                        <p>Aceptamos transferencia bancaria, tarjeta de crédito y Bizum. El pago se divide en 50% al inicio del proyecto y 50% al finalizar.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">¿Ofrecéis soporte después de la entrega?</div>
+                    <div class="faq-answer">
+                        <p>Sí, todos los packs incluyen 30 días de soporte post-entrega. Además, ofrecemos mantenimiento mensual para soporte continuo y actualizaciones.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Comienza Tu Transformación Digital</h2>
+                <p>Contacta con nosotros para una consultoría gratuita y personalizada. Analizaremos tu negocio y te recomendaremos la mejor estrategia de digitalización.</p>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/34600000000" class="btn btn-accent" target="_blank"><i class="fab fa-whatsapp"></i> Consultoría por WhatsApp</a>
+                    <a href="tel:+34600000000" class="btn btn-secondary"><i class="fas fa-phone-alt"></i> Llamar Ahora</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-logo">Click Local<div class="logo-dot"></div></div>
+                    <p>Especialistas en digitalización elegante para negocios sevillanos. Transformamos tu presencia online con diseños minimalistas y soluciones efectivas.</p>
+                    <div class="hero-badges">
+                        <div class="badge" style="background: rgba(255,255,255,0.1); color: white; border: none;"><i class="fas fa-rocket"></i> Entregas rápidas</div>
+                        <div class="badge" style="background: rgba(255,255,255,0.1); color: white; border: none;"><i class="fas fa-map-marker-alt"></i> Enfoque local</div>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Enlaces</h4>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#packs">Packs</a></li>
+                        <li><a href="#faq">Preguntas Frecuentes</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-services">
+                    <h4>Servicios</h4>
+                    <ul>
+                        <li><a href="#packs">Presencia Pro</a></li>
+                        <li><a href="#packs">Digitalización Completa</a></li>
+                        <li><a href="#packs">Crecimiento Local</a></li>
+                        <li><a href="#bonus">Mantenimiento Web</a></li>
+                        <li><a href="#bonus">Sesiones Fotográficas</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contacto</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Sevilla, España</p>
+                    <p><a href="tel:+34600000000"><i class="fas fa-phone-alt"></i> +34 600 000 000</a></p>
+                    <p><a href="https://wa.me/34600000000" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></p>
+                    <p><a href="mailto:hola@clicklocalsevilla.com"><i class="fas fa-envelope"></i> hola@clicklocalsevilla.com</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Click Local Sevilla. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        });
+        
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentNode;
+                const isActive = item.classList.contains('active');
+                
+                // Close all items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+        
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu').addEventListener('click', () => {
+            const nav = document.querySelector('nav ul');
+            nav.classList.toggle('show');
+        });
+        
+        // Smooth Scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.querySelector('nav ul').classList.remove('show');
+                }
+            });
+        });
+        
+        // Floating cards animation
+        const floatingCards = document.querySelectorAll('.floating-card');
+        floatingCards.forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.2}s`;
+        });
+        
+        // Pack hover effects
+        document.querySelectorAll('.pack').forEach(pack => {
+            pack.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+            });
+            
+            pack.addEventListener('mouseleave', function() {
+                if (!this.classList.contains('pack-popular')) {
+                    this.style.transform = 'translateY(0)';
+                } else {
+                    this.style.transform = 'scale(1.05) translateY(-10px)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
