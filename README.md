@@ -7,7 +7,7 @@ Sitio web profesional para servicios de digitalización en Sevilla.
 ⦁	Optimizado para SEO local
 📞 Contacto
 ⦁	WhatsApp: +34 641 14 11 95
-⦁	Email: hola@clicklocalsevilla.com
+⦁	Email: clicklocaleu@gmail.com
 ⦁	Localización: Sevilla, España
 🛠️ Tecnologías utilizadas
 ⦁	HTML5
