@@ -177,6 +177,196 @@
         .problem .ps-icon { background: var(--accent); }
         .solution .ps-icon { background: var(--primary); }
 
+        /* ======== CARRUSEL DE PROYECTOS ======== */
+        .projects {
+            background-color: var(--white);
+            padding: 6rem 0;
+            position: relative;
+        }
+        .projects::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="%234361ee" opacity="0.02"/></svg>');
+            background-size: cover;
+            z-index: 0;
+        }
+
+        .projects-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: var(--shadow-hover);
+            background: var(--white);
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .project-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            width: 100%;
+        }
+
+        @media (max-width: 992px) {
+            .project-content {
+                flex-direction: column;
+                gap: 2rem;
+            }
+        }
+
+        .project-image {
+            flex: 1;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-hover);
+            border: 1px solid rgba(67, 97, 238, 0.1);
+            transition: var(--transition);
+            background: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-image:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(67, 97, 238, 0.3);
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .project-info {
+            flex: 1;
+            padding: 2rem 0;
+        }
+
+        .project-info h3 {
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .project-type {
+            display: inline-block;
+            background: rgba(67, 97, 238, 0.1);
+            color: var(--primary);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-features {
+            margin: 1.5rem 0;
+        }
+
+        .project-feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .project-feature i {
+            color: var(--primary);
+            margin-right: 10px;
+            width: 20px;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            font-weight: 600;
+            margin-top: 2rem;
+            transition: var(--transition);
+        }
+
+        .project-link:hover {
+            color: var(--secondary);
+            transform: translateX(5px);
+        }
+
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .carousel-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .carousel-btn:hover {
+            transform: scale(1.1);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .carousel-dots {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(67, 97, 238, 0.2);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .carousel-dot.active {
+            background: var(--primary);
+            transform: scale(1.2);
+        }
+
+        /* ======== FIN CARRUSEL ======== */
+
         .packs { padding: 6rem 0; }
         .packs-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(320px,1fr)); gap: 2.5rem; }
         .pack {
@@ -304,6 +494,7 @@
             .ps-grid { grid-template-columns: 1fr; }
             .pack-popular { transform: none; }
             .pack-popular:hover { transform: translateY(-10px); }
+            .project-content { flex-direction: column; }
         }
         @media (max-width: 768px) {
             h1 { font-size: 2.5rem; }
@@ -319,6 +510,8 @@
             nav ul.show { display: flex; }
             .mobile-menu { display: block; }
             section { padding: 4rem 0; }
+            .carousel-slide { padding: 2rem; }
+            .project-image img { height: 300px; }
         }
     </style>
 </head>
@@ -330,6 +523,7 @@
                 <ul>
                     <li><a href="#inicio">Inicio</a></li>
                     <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#proyectos">Proyectos</a></li>
                     <li><a href="#packs">Packs</a></li>
                     <li><a href="#faq">FAQ</a></li>
                     <li><a href="#contacto">Contacto</a></li>
@@ -454,6 +648,136 @@
             </div>
         </div>
     </section>
+
+    <!-- ===== NUEVA SECCIÓN CARRUSEL DE PROYECTOS ===== -->
+    <section class="projects" id="proyectos">
+        <div class="container projects-container">
+            <h2>Proyectos Destacados</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 4rem; font-size: 1.1rem; color: var(--text-light);">
+                Descubre algunos de nuestros proyectos más recientes. Cada web está diseñada para maximizar la conversión y reflejar la esencia de cada negocio.
+            </p>
+
+            <div class="carousel">
+                <div class="carousel-track">
+                    <!-- Proyecto 1: Bar Postiguillo -->
+                    <div class="carousel-slide">
+                        <div class="project-content">
+                            <div class="project-image">
+                                <img src="https://lh3.googleusercontent.com/p/AF1QipOHwP-eSehOKJvKeFkHmz71Boo0qRU8zgPNbgKf=s680-w680-h510-rw" alt="Bar Postiguillo" loading="lazy">
+                            </div>
+                            <div class="project-info">
+                                <h3>Bar Postiguillo</h3>
+                                <div class="project-type">Restaurante & Bar</div>
+                                <p>Sitio web gastronómico con menú digital interactivo, sistema de reservas online, integración con delivery y galería de platos con fotografías profesionales que capturan la esencia del local.</p>
+                                
+                                <div class="project-features">
+                                    <div class="project-feature">
+                                        <i class="fas fa-check"></i> Menú digital con categorías y precios actualizados
+                                    </div>
+                                    <div class="project-feature">
+                                        <i class="fas fa-check"></i> Sistema de reservas de mesas online integrado
+                                    </div>
+                                    <div class="project-feature">
+                                        <i class="fas fa-check"></i> Conexión con plataformas de delivery populares
+                                    </div>
+                                    <div class="project-feature">
+                                        <i class="fas fa-check"></i> Galería visual con ambiente y platos destacados
+                                    </div>
+                                </div>
+                                
+                                <a href="https://www.barpostiguillo.com/" class="project-link" target="_blank" rel="noopener">
+                                    <i class="fas fa-external-link-alt"></i> Visitar sitio web
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Proyecto 2: AutoSaljarafe -->
+                    <div class="carousel-slide">
+                        <div class="project-content">
+                            <div class="project-image">
+                                <img src="data:image/png;base64,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" alt="AutoSaljarafe" loading="lazy">
+                            </div>
+                            <div class="project-info">
+                                <h3>AutoSaljarafe</h3>
+                                <div class="project-type">Concesionario de Vehículos</div>
+                                <p>Diseño moderno y funcional para un concesionario de coches, con catálogo interactivo, sistema de reservas de test drive y gestión de inventario en tiempo real.</p>
+                                
+                                <div class="project-features">
+                                    <div class="project-feature">
+                                        <i class="fas fa-check"></i> Catálogo de vehículos con filtros avanzados
+                                    </div>
+                                    <div class="project-feature">
+                                        <i class="fas fa-check"></i> Sistema de reserva de test drives online
+                                    </div>
+                                    <div class="project-feature">
+                                        <i class="fas fa-check"></i> Integración con Google Business
+                                    </div>
+                                    <div class="project-feature">
+                                        <i class="fas fa-check"></i> Diseño responsive optimizado para móviles
+                                    </div>
+                                </div>
+                                
+                                <a href="https://www.autosaljarafe.com/" class="project-link" target="_blank" rel="noopener">
+                                    <i class="fas fa-external-link-alt"></i> Visitar sitio web
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Proyecto 3: Café El Criollo -->
+                    <div class="carousel-slide">
+                        <div class="project-content">
+                            <div class="project-image">
+                                <img src="https://redaccion.camarazaragoza.com/wp-content/uploads/2019/04/Caf%C3%A9s-El-Criollo.png" alt="Café El Criollo" loading="lazy">
+                            </div>
+                            <div class="project-info">
+                                <h3>Café El Criollo</h3>
+                                <div class="project-type">Cafetería & Tostadores</div>
+                                <p>Página web para una cafetería especializada con catálogo de productos, sistema de pedidos online, información sobre el proceso de tostado y una experiencia digital que refleja la calidad del café artesanal.</p>
+                                
+                                <div class="project-features">
+                                    <div class="project-feature">
+                                        <i class="fas fa-check"></i> Catálogo de cafés y productos especiales
+                                    </div>
+                                    <div class="project-feature">
+                                        <i class="fas fa-check"></i> Sistema de pedidos online con seguimiento
+                                    </div>
+                                    <div class="project-feature">
+                                        <i class="fas fa-check"></i> Blog con consejos sobre café y preparación
+                                    </div>
+                                    <div class="project-feature">
+                                        <i class="fas fa-check"></i> Sección sobre el proceso artesanal de tostado
+                                    </div>
+                                </div>
+                                
+                                <a href="https://cafeselcriollo.com/" class="project-link" target="_blank" rel="noopener">
+                                    <i class="fas fa-external-link-alt"></i> Visitar sitio web
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-nav">
+                    <button class="carousel-btn prev-btn" aria-label="Proyecto anterior">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    
+                    <div class="carousel-dots">
+                        <div class="carousel-dot active" data-slide="0"></div>
+                        <div class="carousel-dot" data-slide="1"></div>
+                        <div class="carousel-dot" data-slide="2"></div>
+                    </div>
+                    
+                    <button class="carousel-btn next-btn" aria-label="Siguiente proyecto">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ===== FIN SECCIÓN CARRUSEL ===== -->
 
     <section class="packs" id="packs">
         <div class="container">
@@ -651,6 +975,7 @@
                     <ul>
                         <li><a href="#inicio">Inicio</a></li>
                         <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#proyectos">Proyectos</a></li>
                         <li><a href="#packs">Packs</a></li>
                         <li><a href="#faq">Preguntas Frecuentes</a></li>
                         <li><a href="#contacto">Contacto</a></li>
@@ -737,6 +1062,54 @@
                 }
             });
         });
+
+        // ===== CÓDIGO DEL CARRUSEL =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const track = document.querySelector('.carousel-track');
+            const slides = Array.from(document.querySelectorAll('.carousel-slide'));
+            const dots = Array.from(document.querySelectorAll('.carousel-dot'));
+            const nextBtn = document.querySelector('.next-btn');
+            const prevBtn = document.querySelector('.prev-btn');
+            
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+            
+            // Función para actualizar el carrusel
+            function updateCarousel() {
+                track.style.transform = `translateX(-${currentSlide * 100}%)`;
+                
+                // Actualizar dots
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentSlide);
+                });
+            }
+            
+            // Event listeners para los botones
+            nextBtn.addEventListener('click', () => {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                updateCarousel();
+            });
+            
+            prevBtn.addEventListener('click', () => {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                updateCarousel();
+            });
+            
+            // Event listeners para los dots
+            dots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    currentSlide = parseInt(dot.getAttribute('data-slide'));
+                    updateCarousel();
+                });
+            });
+            
+            // Autoplay opcional (descomenta si lo quieres)
+            // setInterval(() => {
+            //     currentSlide = (currentSlide + 1) % totalSlides;
+            //     updateCarousel();
+            // }, 5000);
+        });
+        // ===== FIN CÓDIGO DEL CARRUSEL =====
     </script>
 </body>
 </html>
