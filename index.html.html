@@ -225,15 +225,17 @@
 
         .project-content {
             display: flex;
-            align-items: center;
+            align-items: stretch;
             gap: 4rem;
             width: 100%;
+            min-height: 400px;
         }
 
         @media (max-width: 992px) {
             .project-content {
                 flex-direction: column;
                 gap: 2rem;
+                min-height: auto;
             }
         }
 
@@ -244,10 +246,12 @@
             box-shadow: var(--shadow-hover);
             border: 1px solid rgba(67, 97, 238, 0.1);
             transition: var(--transition);
-            background: var(--light);
+            background: #f5f5f5;
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+            min-height: 400px;
         }
 
         .project-image:hover {
@@ -257,14 +261,21 @@
 
         .project-image img {
             width: 100%;
-            height: 400px;
-            object-fit: contain;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            position: absolute;
+            top: 0;
+            left: 0;
             display: block;
         }
 
         .project-info {
             flex: 1;
-            padding: 2rem 0;
+            padding: 1rem 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .project-info h3 {
@@ -292,7 +303,7 @@
 
         .project-feature {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             margin-bottom: 1rem;
             color: var(--text-light);
         }
@@ -301,6 +312,8 @@
             color: var(--primary);
             margin-right: 10px;
             width: 20px;
+            margin-top: 3px;
+            flex-shrink: 0;
         }
 
         .project-link {
@@ -511,7 +524,7 @@
             .mobile-menu { display: block; }
             section { padding: 4rem 0; }
             .carousel-slide { padding: 2rem; }
-            .project-image img { height: 300px; }
+            .project-image { min-height: 300px; }
         }
     </style>
 </head>
@@ -696,7 +709,7 @@
                     <div class="carousel-slide">
                         <div class="project-content">
                             <div class="project-image">
-                                <img src="https://www.autosaljarafe.com/_next/image?url=https%3A%2F%2Ffirebasestorage.googleapis.com%2Fv0%2Fb%2Fweb-builder%2Fo%2F700e9676-5aa5-4dcb-8678-6bc42f3feb34%252F66820abd-a8cc-4a00-994f-faebf47bcbe0%3Falt%3Dmedia%26token%3De9a2c46f-e751-4854-9e18-1006d0d932ff&w=1920&q=75">
+                                <img src="https://www.autosaljarafe.com/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fvehicles-sbx%2F8e5624aa-82f9-4c4d-a5a1-44677df2c9c4%2Fbackground-images%2F904a29e7-fbe7-46d2-9373-4c85576701e1&w=3840&q=75">
                             </div>
                             <div class="project-info">
                                 <h3>AutoSaljarafe</h3>
